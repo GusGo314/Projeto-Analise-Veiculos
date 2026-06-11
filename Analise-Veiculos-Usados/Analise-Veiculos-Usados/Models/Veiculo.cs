@@ -19,16 +19,10 @@ namespace Analise_Veiculos_Usados.Models
         public string NotaFiscal { get; set; }
         public DateTime DataNF { get; set; }
         public decimal ValorNF { get; set; }
+        public string CNPJOrigem { get; set; }
+        public string CodFipe { get; set; }
 
 
-    }
-            
-           
-
-
-            
-
-
-
-    
+    }   
+ 
 }
