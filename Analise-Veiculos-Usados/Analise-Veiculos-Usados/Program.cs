@@ -1,6 +1,7 @@
 using System;
 using Analise_Veiculos_Usados.Helpers;
 using Analise_Veiculos_Usados.Models;
+using System.Windows.Forms;
 namespace Analise_Veiculos_Usados
     
 {
@@ -12,8 +13,8 @@ namespace Analise_Veiculos_Usados
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            // ApplicationConfiguration.Initialize(); IMPORTANTE, DESCOMENTAR DEPOIS
-            // Application.Run(new Form1()); - IMPORTANTE, DESCOMENTAR DEPOIS
+             ApplicationConfiguration.Initialize(); 
+             Application.Run(new Form1()); 
 
 
 
