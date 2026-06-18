@@ -21,18 +21,26 @@ namespace Analise_Veiculos_Usados
         private void BtnCarregarPlanilha_Click(object sender, EventArgs e)
         {
             var RetornoDialog = openFileDialog1.ShowDialog();
-            
-            if (RetornoDialog == DialogResult.OK){
+
+            if (RetornoDialog == DialogResult.OK)
+            {
                 ExcelHelper Leitor = new ExcelHelper();
-                
+
 
                 InputVeiculos = Leitor.LeitorExcel(openFileDialog1.FileName);
                 planilhaAnalise.DataSource = InputVeiculos;
 
+                Analise analiseAtual = new Analise();
+
+                planilhaAnaliseDados.DataSource = analiseAtual.DadosLista;
+
+
+
+
 
             }
 
-            else if(RetornoDialog == DialogResult.Cancel)
+            else if (RetornoDialog == DialogResult.Cancel)
             {
 
 
@@ -40,22 +48,27 @@ namespace Analise_Veiculos_Usados
 
             }
 
-            
-            
 
 
-            
+
+
+
 
         }
 
         private void planilhaAnalise_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-           
+
+        }
+
+        private void planilhaAnaliseDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
