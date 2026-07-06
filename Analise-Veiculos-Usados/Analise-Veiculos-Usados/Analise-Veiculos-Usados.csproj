@@ -13,4 +13,10 @@
     <PackageReference Include="ClosedXML" Version="0.105.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Database.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

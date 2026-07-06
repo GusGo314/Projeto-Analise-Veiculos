@@ -13,7 +13,7 @@ namespace Analise_Veiculos_Usados.Models
             public Concessionaria Css_Analise{ get; set; }
             public Guid ID_Analise { get; set; }
              
-            public class DadosAnalise
+            public class DadosAnalise 
         {
 
             public string BUCanalise { get; set; }

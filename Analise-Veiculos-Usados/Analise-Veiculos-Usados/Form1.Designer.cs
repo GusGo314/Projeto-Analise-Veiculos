@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             planilhaAnalise = new DataGridView();
-            BtnCarregarPlanilha = new Button();
-            openFileDialog1 = new OpenFileDialog();
-            planilhaAnaliseDados = new DataGridView();
             ColunaItem = new DataGridViewTextBoxColumn();
             ColunaCNPJ = new DataGridViewTextBoxColumn();
             ColunaFabricante = new DataGridViewTextBoxColumn();
@@ -44,8 +41,15 @@
             ColunaNF = new DataGridViewTextBoxColumn();
             ColunaDataNF = new DataGridViewTextBoxColumn();
             ColunaValor = new DataGridViewTextBoxColumn();
+            BtnCarregarPlanilha = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            planilhaAnaliseDados = new DataGridView();
+            ValorTotal = new Label();
+            BoxValorTotal = new GroupBox();
+            ValorTotalInput = new Label();
             ((System.ComponentModel.ISupportInitialize)planilhaAnalise).BeginInit();
             ((System.ComponentModel.ISupportInitialize)planilhaAnaliseDados).BeginInit();
+            BoxValorTotal.SuspendLayout();
             SuspendLayout();
             // 
             // planilhaAnalise
@@ -57,38 +61,12 @@
             planilhaAnalise.Size = new Size(450, 246);
             planilhaAnalise.TabIndex = 0;
             planilhaAnalise.CellContentClick += planilhaAnalise_CellContentClick;
-            planilhaAnalise.AutoGenerateColumns = false;
-            // 
-            // BtnCarregarPlanilha
-            // 
-            BtnCarregarPlanilha.Location = new Point(12, 34);
-            BtnCarregarPlanilha.Name = "BtnCarregarPlanilha";
-            BtnCarregarPlanilha.Size = new Size(154, 34);
-            BtnCarregarPlanilha.TabIndex = 1;
-            BtnCarregarPlanilha.Text = "Carregar Planilha";
-            BtnCarregarPlanilha.UseVisualStyleBackColor = true;
-            BtnCarregarPlanilha.Click += BtnCarregarPlanilha_Click;
-            // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
-            openFileDialog1.FileOk += openFileDialog1_FileOk;
-            // 
-            // planilhaAnaliseDados
-            // 
-            planilhaAnaliseDados.AllowUserToAddRows = false;
-            planilhaAnaliseDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            planilhaAnaliseDados.Location = new Point(468, 74);
-            planilhaAnaliseDados.Name = "planilhaAnaliseDados";
-            planilhaAnaliseDados.Size = new Size(453, 245);
-            planilhaAnaliseDados.TabIndex = 2;
-            planilhaAnaliseDados.CellContentClick += planilhaAnaliseDados_CellContentClick;
+            planilhaAnalise.CellFormatting += planilhaAnalise_CellFormatting;
             // 
             // ColunaItem
             // 
             ColunaItem.HeaderText = "Item";
             ColunaItem.Name = "ColunaItem";
-            ColunaItem.ReadOnly = true;
             // 
             // ColunaCNPJ
             // 
@@ -167,11 +145,66 @@
             ColunaValor.Name = "ColunaValor";
             ColunaValor.ReadOnly = true;
             // 
+            // BtnCarregarPlanilha
+            // 
+            BtnCarregarPlanilha.Location = new Point(12, 34);
+            BtnCarregarPlanilha.Name = "BtnCarregarPlanilha";
+            BtnCarregarPlanilha.Size = new Size(154, 34);
+            BtnCarregarPlanilha.TabIndex = 1;
+            BtnCarregarPlanilha.Text = "Carregar Planilha";
+            BtnCarregarPlanilha.UseVisualStyleBackColor = true;
+            BtnCarregarPlanilha.Click += BtnCarregarPlanilha_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.FileOk += openFileDialog1_FileOk;
+            // 
+            // planilhaAnaliseDados
+            // 
+            planilhaAnaliseDados.AllowUserToAddRows = false;
+            planilhaAnaliseDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            planilhaAnaliseDados.Location = new Point(468, 74);
+            planilhaAnaliseDados.Name = "planilhaAnaliseDados";
+            planilhaAnaliseDados.Size = new Size(453, 245);
+            planilhaAnaliseDados.TabIndex = 2;
+            planilhaAnaliseDados.CellContentClick += planilhaAnaliseDados_CellContentClick;
+            // 
+            // ValorTotal
+            // 
+            ValorTotal.AutoSize = true;
+            ValorTotal.ForeColor = SystemColors.ControlText;
+            ValorTotal.Location = new Point(0, 0);
+            ValorTotal.Name = "ValorTotal";
+            ValorTotal.Size = new Size(62, 15);
+            ValorTotal.TabIndex = 3;
+            ValorTotal.Text = "Valor Total";
+            // 
+            // BoxValorTotal
+            // 
+            BoxValorTotal.Controls.Add(ValorTotalInput);
+            BoxValorTotal.Controls.Add(ValorTotal);
+            BoxValorTotal.Location = new Point(311, 336);
+            BoxValorTotal.Name = "BoxValorTotal";
+            BoxValorTotal.Size = new Size(151, 40);
+            BoxValorTotal.TabIndex = 4;
+            BoxValorTotal.TabStop = false;
+            // 
+            // ValorTotalInput
+            // 
+            ValorTotalInput.AutoSize = true;
+            ValorTotalInput.Location = new Point(52, 19);
+            ValorTotalInput.Name = "ValorTotalInput";
+            ValorTotalInput.Size = new Size(34, 15);
+            ValorTotalInput.TabIndex = 4;
+            ValorTotalInput.Text = "         \r\n";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 461);
+            Controls.Add(BoxValorTotal);
             Controls.Add(planilhaAnaliseDados);
             Controls.Add(BtnCarregarPlanilha);
             Controls.Add(planilhaAnalise);
@@ -180,6 +213,8 @@
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)planilhaAnalise).EndInit();
             ((System.ComponentModel.ISupportInitialize)planilhaAnaliseDados).EndInit();
+            BoxValorTotal.ResumeLayout(false);
+            BoxValorTotal.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -201,5 +236,8 @@
         private DataGridViewTextBoxColumn ColunaNF;
         private DataGridViewTextBoxColumn ColunaDataNF;
         private DataGridViewTextBoxColumn ColunaValor;
+        private Label ValorTotal;
+        private GroupBox BoxValorTotal;
+        private Label ValorTotalInput;
     }
 }

@@ -15,7 +15,7 @@ namespace Analise_Veiculos_Usados
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            planilhaAnalise.AutoGenerateColumns = false;
         }
 
         private void BtnCarregarPlanilha_Click(object sender, EventArgs e)
@@ -26,16 +26,34 @@ namespace Analise_Veiculos_Usados
             {
                 ExcelHelper Leitor = new ExcelHelper();
 
-
+             
                 InputVeiculos = Leitor.LeitorExcel(openFileDialog1.FileName);
                 planilhaAnalise.DataSource = InputVeiculos;
 
                 Analise analiseAtual = new Analise();
 
                 planilhaAnaliseDados.DataSource = analiseAtual.DadosLista;
+                decimal valorTotal = 0;
+
+                FipeHelper Comparador = new FipeHelper();
+       
 
 
 
+            
+              foreach (Veiculo x in InputVeiculos)
+                {
+                    valorTotal += x.ValorNF;
+
+
+
+                }
+
+
+
+                ValorTotalInput.Text = valorTotal.ToString("C");
+
+            
 
 
             }
@@ -64,11 +82,25 @@ namespace Analise_Veiculos_Usados
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
+
+
+
+
         }
 
         private void planilhaAnaliseDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
+        private void planilhaAnalise_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                e.Value = e.RowIndex + 1;
+            }
+        }
+
+       
     }
 }
