@@ -17,7 +17,6 @@ namespace Analise_Veiculos_Usados.Models
         public string CombustivelFipe { get; set; }
         public decimal ValorFipe { get; set; }
         public string CodFipeInput { get; set; }
-
         public string PlacaInput { get; set; }
 
     }
