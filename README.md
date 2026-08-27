@@ -1,22 +1,30 @@
-# Sistema de Análise de Estoque de Veículos
+Sistema de Análise de Estoque de Veículos
 
-Sistema desktop desenvolvido em C# com WinForms para análise 
-de estoque de veículos, substituindo o processo manual em Excel.
+Sistema desktop desenvolvido em C# com Windows Forms para automatizar a análise de estoque de concessionárias de veículos.
 
-## Funcionalidades
-- Importar planilha Excel de estoque
-- Visualizar e filtrar veículos por marca, modelo e preço
-- Identificar veículos com idade acima de 10 anos
-- Comparar preço do veiculo com a Fipe atual
-- Resumo de estoque por marca
-- Exportar relatório
+O projeto nasceu de um processo real: analistas recebem planilhas Excel com dados de entrada de veículos e precisam cruzar manualmente essas informações com valores de mercado (tabela Fipe) para identificar discrepâncias de precificação. O sistema automatiza esse cruzamento, eliminando o trabalho manual em planilhas.
 
-## Tecnologias
-- C# / .NET
-- Windows Forms
-- ClosedXML (leitura e escrita de Excel)
+Funcionalidades
+Importação de planilha Excel de estoque via seletor de arquivo
+Visualização dos dados do estoque em tabela estruturada
+Cruzamento automático de cada veículo com base de referência Fipe pelo número de placa
+Cálculo da relação percentual entre o valor declarado na nota fiscal e o valor de mercado
+Cálculo do valor total do estoque importado
+Identificação de veículos não encontrados na base de referência
+Observação sobre a integração Fipe
 
-## Como rodar
-1. Clone o repositório
-2. Abra no Visual Studio
-3. Execute o projeto (F5)
+As APIs públicas de consulta Fipe são pagas. Por isso, a base de referência utilizada neste projeto é um mock local em JSON com 30 registros fictícios, estruturado para simular o retorno de uma consulta real por placa. A arquitetura do sistema permite substituir essa camada por uma integração real sem alterações no restante do código.
+
+Tecnologias
+C# / .NET 8
+Windows Forms
+ClosedXML (leitura de Excel)
+System.Text.Json (leitura da base mock em JSON)
+Como rodar
+Clone o repositório
+Abra o arquivo .sln no Visual Studio
+Execute o projeto com F5
+Clique em "Carregar Planilha" e selecione um arquivo Excel no formato esperado
+Status
+
+Em desenvolvimento. Funcionalidades de análise avançada (filtros, exportação de relatório, resumo por marca) estão planejadas para próximas versões.
