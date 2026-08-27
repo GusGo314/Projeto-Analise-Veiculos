@@ -21,29 +21,53 @@ namespace Analise_Veiculos_Usados
         private void BtnCarregarPlanilha_Click(object sender, EventArgs e)
         {
             var RetornoDialog = openFileDialog1.ShowDialog();
+           
+                if (RetornoDialog == DialogResult.OK)
+                {
 
-            if (RetornoDialog == DialogResult.OK)
-            {
-                ExcelHelper Leitor = new ExcelHelper();
+                try 
+                {
+                    ExcelHelper Leitor = new ExcelHelper();
+                    InputVeiculos = Leitor.LeitorExcel(openFileDialog1.FileName);
+                    planilhaAnalise.DataSource = InputVeiculos;
 
-             
-                InputVeiculos = Leitor.LeitorExcel(openFileDialog1.FileName);
-                planilhaAnalise.DataSource = InputVeiculos;
+                }
 
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show($"Não foi possivel realizar a leitura do arquivo");
+
+                    File.AppendAllText("C:\\TestePlanilha\\Log.txt", $"{DateTime.Now} {ex.Message}\n");
+
+
+
+                }
                 Analise analiseAtual = new Analise();
 
-                planilhaAnaliseDados.DataSource = analiseAtual.DadosLista;
-                decimal valorTotal = 0;
+                    planilhaAnaliseDados.DataSource = analiseAtual.DadosLista;
+                    decimal valorTotal = 0;
 
-                FipeHelper Comparador = new FipeHelper();
-       
-
+                    FipeHelper Comparador = new FipeHelper();
 
 
-            
-              foreach (Veiculo x in InputVeiculos)
+                    foreach (Veiculo x in InputVeiculos)
+                    {
+                        valorTotal += x.ValorNF;
+
+
+                    }
+
+
+
+                    ValorTotalInput.Text = valorTotal.ToString("C");
+
+
+                }
+
+                else if (RetornoDialog == DialogResult.Cancel)
                 {
-                    valorTotal += x.ValorNF;
+
 
 
 
@@ -51,28 +75,12 @@ namespace Analise_Veiculos_Usados
 
 
 
-                ValorTotalInput.Text = valorTotal.ToString("C");
-
-            
 
 
+
+
+          
             }
-
-            else if (RetornoDialog == DialogResult.Cancel)
-            {
-
-
-
-
-            }
-
-
-
-
-
-
-
-        }
 
         private void planilhaAnalise_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
