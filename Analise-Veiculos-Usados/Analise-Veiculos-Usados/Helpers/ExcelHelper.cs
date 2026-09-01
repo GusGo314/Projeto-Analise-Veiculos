@@ -38,7 +38,7 @@ namespace Analise_Veiculos_Usados.Helpers
                 inputVeiculo.CNPJOrigem = row.Cell(3).GetValue<string>();
                 inputVeiculo.Fabricante = row.Cell(4).GetValue<string>(); // sintaxe diz algo como: "pegue o valor da celula 2  //
                 inputVeiculo.Modelo = row.Cell(5).GetValue<string>();     //daquela row que está selecionada no foreach, em     //
-                inputVeiculo.Versao = row.Cell(6).GetValue<string>();     //formato <string> e atribua ao
+                inputVeiculo.Versao = row.Cell(6).GetValue<string>();     //formato <string> e atribua
 
 
 
@@ -64,7 +64,15 @@ namespace Analise_Veiculos_Usados.Helpers
                 
 
                 ListaRetorno.Add(inputVeiculo);
+
+
+
+                Concessionaria ConcessionariaRetorno = new Concessionaria();
+
                 
+
+
+
 
 
 

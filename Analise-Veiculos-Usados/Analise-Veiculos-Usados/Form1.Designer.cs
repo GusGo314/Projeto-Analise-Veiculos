@@ -26,7 +26,7 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             planilhaAnalise = new DataGridView();
             ColunaItem = new DataGridViewTextBoxColumn();
@@ -47,6 +47,7 @@
             ValorTotal = new Label();
             BoxValorTotal = new GroupBox();
             ValorTotalInput = new Label();
+            botaoNovoForms = new Button();
             ((System.ComponentModel.ISupportInitialize)planilhaAnalise).BeginInit();
             ((System.ComponentModel.ISupportInitialize)planilhaAnaliseDados).BeginInit();
             BoxValorTotal.SuspendLayout();
@@ -60,7 +61,6 @@
             planilhaAnalise.Name = "planilhaAnalise";
             planilhaAnalise.Size = new Size(450, 246);
             planilhaAnalise.TabIndex = 0;
-            planilhaAnalise.CellContentClick += planilhaAnalise_CellContentClick;
             planilhaAnalise.CellFormatting += planilhaAnalise_CellFormatting;
             // 
             // ColunaItem
@@ -158,7 +158,6 @@
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
-            openFileDialog1.FileOk += openFileDialog1_FileOk;
             // 
             // planilhaAnaliseDados
             // 
@@ -168,7 +167,6 @@
             planilhaAnaliseDados.Name = "planilhaAnaliseDados";
             planilhaAnaliseDados.Size = new Size(453, 245);
             planilhaAnaliseDados.TabIndex = 2;
-            planilhaAnaliseDados.CellContentClick += planilhaAnaliseDados_CellContentClick;
             // 
             // ValorTotal
             // 
@@ -199,11 +197,22 @@
             ValorTotalInput.TabIndex = 4;
             ValorTotalInput.Text = "         \r\n";
             // 
+            // botaoNovoForms
+            // 
+            botaoNovoForms.Location = new Point(12, 0);
+            botaoNovoForms.Name = "botaoNovoForms";
+            botaoNovoForms.Size = new Size(88, 28);
+            botaoNovoForms.TabIndex = 5;
+            botaoNovoForms.Text = "Novo";
+            botaoNovoForms.UseVisualStyleBackColor = true;
+            botaoNovoForms.Click += botaoNovoForms_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 461);
+            Controls.Add(botaoNovoForms);
             Controls.Add(BoxValorTotal);
             Controls.Add(planilhaAnaliseDados);
             Controls.Add(BtnCarregarPlanilha);
@@ -239,5 +248,6 @@
         private Label ValorTotal;
         private GroupBox BoxValorTotal;
         private Label ValorTotalInput;
+        private Button botaoNovoForms;
     }
 }

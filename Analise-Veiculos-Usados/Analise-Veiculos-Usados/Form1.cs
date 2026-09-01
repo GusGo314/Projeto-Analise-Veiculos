@@ -7,25 +7,25 @@ namespace Analise_Veiculos_Usados
     public partial class Form1 : Form
     {
         public List<Veiculo> InputVeiculos = new List<Veiculo>();
-
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        
+        public Form1() 
+            {
+                InitializeComponent();
+            } 
 
         private void Form1_Load(object sender, EventArgs e)
         {
             planilhaAnalise.AutoGenerateColumns = false;
         }
 
-        private void BtnCarregarPlanilha_Click(object sender, EventArgs e)
+        public void BtnCarregarPlanilha_Click(object sender, EventArgs e)
         {
             var RetornoDialog = openFileDialog1.ShowDialog();
-           
-                if (RetornoDialog == DialogResult.OK)
-                {
+            
+            if (RetornoDialog == DialogResult.OK)
+            {
 
-                try 
+                try
                 {
                     ExcelHelper Leitor = new ExcelHelper();
                     InputVeiculos = Leitor.LeitorExcel(openFileDialog1.FileName);
@@ -45,61 +45,39 @@ namespace Analise_Veiculos_Usados
                 }
                 Analise analiseAtual = new Analise();
 
-                    planilhaAnaliseDados.DataSource = analiseAtual.DadosLista;
-                    decimal valorTotal = 0;
+                planilhaAnaliseDados.DataSource = analiseAtual.DadosLista;
+                decimal valorTotal = 0;
 
-                    FipeHelper Comparador = new FipeHelper();
-
-
-                    foreach (Veiculo x in InputVeiculos)
-                    {
-                        valorTotal += x.ValorNF;
+                FipeHelper Comparador = new FipeHelper();
 
 
-                    }
-
-
-
-                    ValorTotalInput.Text = valorTotal.ToString("C");
-
-
-                }
-
-                else if (RetornoDialog == DialogResult.Cancel)
+                foreach (Veiculo x in InputVeiculos)
                 {
-
-
+                    valorTotal += x.ValorNF;
 
 
                 }
 
 
 
+                ValorTotalInput.Text = valorTotal.ToString("C");
 
 
-
-
-          
             }
 
-        private void planilhaAnalise_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            else if (RetornoDialog == DialogResult.Cancel)
+            {
 
-        }
 
-        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
 
+            }
 
 
 
 
         }
 
-        private void planilhaAnaliseDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
 
         private void planilhaAnalise_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -109,6 +87,17 @@ namespace Analise_Veiculos_Usados
             }
         }
 
-       
+
+
+
+        private void botaoNovoForms_Click(object sender, EventArgs e)
+        {
+            InputVeiculos = new List<Veiculo>();
+            planilhaAnalise.DataSource = InputVeiculos;
+            ValorTotalInput.Text = "";
+            GC.Collect();
+        }
+
+
     }
 }
