@@ -20,11 +20,14 @@ C# / .NET 8
 Windows Forms
 ClosedXML (leitura de Excel)
 System.Text.Json (leitura da base mock em JSON)
+
 Como rodar
 Clone o repositório
 Abra o arquivo .sln no Visual Studio
+Baixe o arquivo TestePlanilha no computador.
 Execute o projeto com F5
-Clique em "Carregar Planilha" e selecione um arquivo Excel no formato esperado
-Status
+Clique em "Carregar Planilha" e carregue o arquivo de testes.
+
+(Visto que, inicialmente, o projeto serve para ler planilhas que vinham todas em um padrão especifico no ambiente de trabalho, leituras de planilhas com outras estruturas de dados e células podem causar erro)
 
 Em desenvolvimento. Funcionalidades de análise avançada (filtros, exportação de relatório, resumo por marca) estão planejadas para próximas versões.
